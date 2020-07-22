@@ -1,0 +1,17 @@
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+canvas.width = 1150;
+canvas.height = 600;
+let isOver = false;
+let myBricks = [];
+let myBar = new Bar();
+let myBall = [];
+myBall[0] = new Balls();
+let myScore = new GetScore();
+let myNotKnow = [];
+let timeSpeed = 20;
+let timeID;
+let backgroundID = 0;
+let colorLive = ["","white","green","yellow","red"];
+let backgroundImg = new Image();
+drawBackground();
