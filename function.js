@@ -8,7 +8,8 @@ function startGame() {
 function endGame() {
     clearInterval(timeID);
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    backgroundImg.src = "images/gameover.png";
+    if (isWin)  backgroundImg.src = "images/win.png";
+     else backgroundImg.src = "images/gameover.png";
     ctx.drawImage(backgroundImg,0,0,canvas.width,canvas.height);
     isOver = true;
 }

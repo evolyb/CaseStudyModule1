@@ -3,6 +3,7 @@ let ctx = canvas.getContext("2d");
 canvas.width = 1150;
 canvas.height = 600;
 let isOver = false;
+let isWin = false;
 let myBricks = [];
 let myBar = new Bar();
 let myBall = [];

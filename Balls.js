@@ -113,7 +113,13 @@ function Balls() {
                     let myNewNotKnow = new NotKnow(this.x,this.y);
                     myNotKnow.push(myNewNotKnow);
                 }
-
+                for (let i = 0; i <myBricks.length ; i++) {
+                    for (let j = 0; j <myBricks[i].length ; j++) {
+                        if (myBricks[i][j].isExist) return;
+                    }
+                }
+                isWin = true;
+                endGame();
             }
         }
     }
