@@ -7,7 +7,7 @@ function loadGame() {
         ctx.beginPath();
         ctx.drawImage(backgroundImg,0,0,canvas.width,canvas.height);
         ctx.closePath();
-        ctx.font = "55px Arial";
+        ctx.font = "50px Arial";
         ctx.fillStyle = "white";
         ctx.fillText(startText,20,300);
     }
