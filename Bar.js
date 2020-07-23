@@ -6,6 +6,8 @@ function Bar() {
     this.x = canvas.width/2 - this.length/2;
     this.y = canvas.height-this.height;
     this.speed = 15;
+    this.directMove = 1;
+    this.defautColor = "yellow";
     this.color = "yellow"
     this.dx = 0;
     this.show = function () {

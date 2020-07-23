@@ -57,10 +57,10 @@ function creatBricks() {
 function moveMyBar(evt) {
     switch (evt.keyCode) {
         case 37:
-            myBar.dx = -myBar.speed;
+            myBar.dx = -myBar.speed*myBar.directMove;
             break;
         case 39:
-            myBar.dx = myBar.speed;
+            myBar.dx = myBar.speed*myBar.directMove;
             break;
     }
 }

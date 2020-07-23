@@ -23,7 +23,9 @@ function NotKnow(x,y) {
         if (this.x + this.radius > item.x && this.x - this.radius < item.x +item.length
             && this.y + this.radius > item.y && this.y - this.radius <item.y + item.height){
             this.isExist = false;
-            let selectCase = Math.floor(Math.random()*4);
+            let selectCase = Math.floor(Math.random()*5);
+            let count = 0;
+            let randX, randY;
             switch (selectCase) {
                 case 0:
                     for (let i = 0; i < 3; i++) {
@@ -37,11 +39,9 @@ function NotKnow(x,y) {
                     break;
                 case 1:
                     myBar.length = Math.max(100, myBar.length - 50);
-                    myTimer.push(new Timer(2000,new EffectChangeColor(myBar,"yellow")));
+                    myTimer.push(new Timer(2000,new EffectChangeColor(myBar,myBar.defautColor)));
                     break;
                 case 2:
-                    let count = 0;
-                    let randX, randY;
                     do{
                         count++;
                         randX = Math.floor(Math.random()*myBricks.length);
@@ -52,7 +52,32 @@ function NotKnow(x,y) {
                     myTimer.push(new Timer(2000,new EffectChangeColor(myBricks[randX][randY],"")));
                     break;
                 case 3:
-                blackOut = new BlackOut();
+                    blackOut = new BlackOut();
+                    break
+                case 4:
+                    myBar.directMove *= -1;
+                    if (myBar.directMove === 1){
+                        myBar.defautColor = "yellow";
+                        myBar.color = "yellow"
+                    } else {
+                        myBar.defautColor = "red";
+                        myBar.color = "red"
+                    }
+                    break;
+                // case 6:
+                //     do{
+                //
+                //         count++;
+                //         randX = Math.floor(Math.random()*myBricks.length);
+                //         randY = Math.floor(Math.random()*myBricks[randX].length);
+                //     } while (myBricks[randX][randY].isExist && count < 100)
+                //     myBricks[randX][randY].isExist = true;
+                //     myBricks[randX][randY].live = 4;
+                //     myBricks[randX][randY].y = Math.max(myBall[0].y - myBall[0].radius - 70,0);
+                //     myBricks[randX][randY].x = Math.max(myBall[0].x - 50,0);
+                //     myTimer.push(new Timer(1500,new EffectChangeColor(myBricks[randX][randY],"")));
+                //     console.log(myBall[0],myBricks[randX][randY]);
+                //     break;
             }
             }
         }
