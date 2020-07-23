@@ -93,8 +93,6 @@ function Balls() {
                 } else {
                     this.dx = -this.dx;
                 }
-
-
                 // Hit the length of the Rectangle
             } else if (this.x >= item.x && this.x <item.x +item.length){
                 this.dy = - this.dy;
@@ -104,6 +102,7 @@ function Balls() {
             } else {
                 this.dx = - this.dx;
             }
+            soundHit.play();
             if (item.name !== "Bar"){
                 myScore.value++;
                 myScore.resetValue++;

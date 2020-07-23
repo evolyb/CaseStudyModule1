@@ -1,9 +1,18 @@
+
+function loadGame() {
+    soundBegin = new Audio("sounds/begin.mp3");
+    drawBackground();
+}
 function startGame() {
     if (isOver) return;
+    if (isStart) return;
+    isStart = true;
+    soundBegin.play();
     window.addEventListener("keydown",moveMyBar);
     window.addEventListener("keyup",stopMyBar);
     creatBricks();
     timeID = setInterval(updateScreen,timeSpeed);
+    soundHit = new Audio("sounds/ballhit.wav");
 }
 function endGame() {
     clearInterval(timeID);
@@ -19,6 +28,9 @@ function reset() {
 function updateScreen() {
     myScore.show();
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    for (let i = 0; i <myTimer.length ; i++) {
+        myTimer[i].update();
+    }
     ctx.drawImage(backgroundImg,0,0,canvas.width,canvas.height);
     myBar.update();
     for (let i = 0; i <myBricks.length ; i++) {
@@ -33,8 +45,6 @@ function updateScreen() {
         myBall[i].update();
     }
     blackOut.show();
-
-
 }
 function creatBricks() {
     for (let i = 0; i < 8 ; i++) {
@@ -51,6 +61,7 @@ function moveMyBar(evt) {
             break;
         case 39:
             myBar.dx = myBar.speed;
+            break;
     }
 }
 function stopMyBar(evt) {
@@ -78,6 +89,7 @@ function BlackOut() {
     }
 }
 function drawBackground() {
+    if (isOver) return;
     if (backgroundID <=4){
         backgroundID++;
     } else backgroundID =1;
@@ -90,10 +102,33 @@ function GetScore() {
     this.value = 0;
     this.resetValue =1;
     this.show = function () {
-        if (this.resetValue% 26 === 0){
-            drawBackground();
-            this.resetValue =1;
-        }
+        // if (this.resetValue% 26 === 0){
+        //     drawBackground();
+        //     this.resetValue =1;
+        // }
         document.getElementById("score-board").innerHTML = this.value;
+    }
+}
+function Timer(time,effect) {
+    this.startTime = Date.now();
+    this.endTime = Date.now();
+    this.time = time;
+    this.effect = effect;
+    this.update = function () {
+        this.endTime = Date.now()
+        if (this.endTime - this.startTime > time) {
+            effect.reset();
+            return;
+        }
+        effect.update();
+    }
+}
+function EffectChangeColor(item,defaultColor){
+    this.reset = function () {
+        item.color = defaultColor
+    }
+    this.update = function () {
+        let color = Math.floor(Math.random()*colorLive.length);
+        item.color = colorLive[color];
     }
 }

@@ -6,11 +6,12 @@ function Bar() {
     this.x = canvas.width/2 - this.length/2;
     this.y = canvas.height-this.height;
     this.speed = 15;
+    this.color = "yellow"
     this.dx = 0;
     this.show = function () {
         ctx.beginPath();
         ctx.rect(this.x,this.y,this.length, this.height);
-        ctx.fillStyle = "yellow"
+        ctx.fillStyle = this.color;
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
