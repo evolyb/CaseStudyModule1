@@ -52,8 +52,8 @@ function NotKnow(x,y) {
                     myTimer.push(new Timer(1000,new EffectChangeColor(myBricks[randX][randY])));
                     break;
                 case 3:
-                    blackOut = new BlackOut();
-                    break
+                    myTimer.push(new Timer(500,new YouCantSee()));
+                    break;
                 case 4:
                 case 5:
                     myBar.directMove *= -1;
@@ -65,20 +65,6 @@ function NotKnow(x,y) {
                         myBar.color = "red"
                     }
                     break;
-                // case 6:
-                //     do{
-                //
-                //         count++;
-                //         randX = Math.floor(Math.random()*myBricks.length);
-                //         randY = Math.floor(Math.random()*myBricks[randX].length);
-                //     } while (myBricks[randX][randY].isExist && count < 100)
-                //     myBricks[randX][randY].isExist = true;
-                //     myBricks[randX][randY].live = 4;
-                //     myBricks[randX][randY].y = Math.max(myBall[0].y - myBall[0].radius - 70,0);
-                //     myBricks[randX][randY].x = Math.max(myBall[0].x - 50,0);
-                //     myTimer.push(new Timer(1500,new EffectChangeColor(myBricks[randX][randY],"")));
-                //     console.log(myBall[0],myBricks[randX][randY]);
-                //     break;
             }
             }
         }

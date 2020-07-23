@@ -50,9 +50,6 @@ function reset() {
 function updateScreen() {
     myScore.show();
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    for (let i = 0; i <myTimer.length ; i++) {
-        myTimer[i].update();
-    }
     ctx.drawImage(backgroundImg,0,0,canvas.width,canvas.height);
     myBar.update();
     for (let i = 0; i <myBricks.length ; i++) {
@@ -66,7 +63,9 @@ function updateScreen() {
     for (let i = 0; i <myBall.length ; i++) {
         myBall[i].update();
     }
-    blackOut.show();
+    for (let i = 0; i <myTimer.length ; i++) {
+        myTimer[i].update();
+    }
 }
 function creatBricks() {
     for (let i = 0; i < 8 ; i++) {
@@ -88,27 +87,6 @@ function moveMyBar(evt) {
 }
 function stopMyBar() {
     myBar.dx = 0;
-}
-let blackOut = new BlackOut();
-blackOut.isExist = false;
-function BlackOut() {
-    this.isExist = true;
-    this.color = 1;
-    this.startTime = Date.now();
-    this.endTime = Date.now();
-    this.show = function () {
-        if (!this.isExist) return;
-        ctx.beginPath();
-        ctx.rect(0,0,canvas.width,canvas.height);
-        if (this.color === colorLive.length){
-            this.color = 1;
-        } else this.color++;
-        ctx.fillStyle = colorLive[this.color];
-        ctx.fill();
-        ctx.closePath();
-        this.endTime = Date.now();
-        if (this.endTime > this.startTime + 500) this.isExist = false;
-    }
 }
 function drawBackground() {
     if (isOver) return;
@@ -150,5 +128,28 @@ function EffectChangeColor(item){
     this.update = function () {
         let color = Math.floor(Math.random()*colorLive.length);
         item.color = colorLive[color];
+    }
+}
+function YouCantSee() {
+    this.startTime = Date.now();
+    this.endTime = Date.now();
+    this.reset = function () {
+
+    }
+    this.update = function () {
+        this.endTime = Date.now();
+        let timeNow = 500 - this.endTime + this.startTime;
+        timeNow = Math.ceil(timeNow/100);
+        timeNow = ""+timeNow;
+        ctx.beginPath();
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.rect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = "white";
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.font = "100px Arial";
+        ctx.fillStyle = "black"
+        ctx.fillText(timeNow,canvas.width/2 - 50,canvas.height/2 - 50);
+        ctx.closePath();
     }
 }
