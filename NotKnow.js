@@ -39,7 +39,7 @@ function NotKnow(x,y) {
                     break;
                 case 1:
                     myBar.length = Math.max(100, myBar.length - 50);
-                    myTimer.push(new Timer(2000,new EffectChangeColor(myBar,myBar.defautColor)));
+                    myTimer.push(new Timer(1000,new EffectChangeColor(myBar)));
                     break;
                 case 2:
                     do{
@@ -49,7 +49,7 @@ function NotKnow(x,y) {
                     } while (myBricks[randX][randY].isExist && count < 100)
                     myBricks[randX][randY].isExist = true;
                     myBricks[randX][randY].live = 4;
-                    myTimer.push(new Timer(2000,new EffectChangeColor(myBricks[randX][randY],"")));
+                    myTimer.push(new Timer(1000,new EffectChangeColor(myBricks[randX][randY])));
                     break;
                 case 3:
                     blackOut = new BlackOut();

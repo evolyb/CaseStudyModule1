@@ -115,10 +115,6 @@ function GetScore() {
     this.value = 0;
     this.resetValue =1;
     this.show = function () {
-        // if (this.resetValue% 26 === 0){
-        //     drawBackground();
-        //     this.resetValue =1;
-        // }
         document.getElementById("score-board").innerHTML = this.value;
     }
 }
@@ -129,16 +125,16 @@ function Timer(time,effect) {
     this.effect = effect;
     this.update = function () {
         this.endTime = Date.now()
-        if (this.endTime - this.startTime > time) {
-            effect.reset();
+        if (this.endTime - this.startTime > this.time) {
+            this.effect.reset();
             return;
         }
-        effect.update();
+        this.effect.update();
     }
 }
-function EffectChangeColor(item,defaultColor){
+function EffectChangeColor(item){
     this.reset = function () {
-        item.color = defaultColor
+        item.color = item.defautColor;
     }
     this.update = function () {
         let color = Math.floor(Math.random()*colorLive.length);

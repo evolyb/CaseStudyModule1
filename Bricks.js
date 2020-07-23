@@ -5,6 +5,7 @@ function Bricks(x,y) {
     this.height = 30;
     this.isExist = true;
     this.live = Math.floor(Math.random()*4)+1;
+    this.defautColor = "";
     this.color = "";
     this.x = x;
     this.y = y;
