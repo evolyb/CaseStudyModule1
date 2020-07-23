@@ -1,6 +1,6 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
-canvas.width = 1150;
+canvas.width = 1050;
 canvas.height = 600;
 let isOver = false;
 let isStart = false;

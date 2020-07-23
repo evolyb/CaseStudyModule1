@@ -14,7 +14,7 @@ function loadGame() {
     ctx.closePath();
 }
 function showInstructor() {
-    if (isStart) return;
+    if (isStart && !isOver) return;
     backgroundImg.src = "images/background0.png";
     backgroundImg.onload = function(){
         ctx.beginPath();
@@ -71,7 +71,7 @@ function creatBricks() {
     for (let i = 0; i < 8 ; i++) {
         myBricks[i] = [];
         for (let j = 0; j <3 ; j++) {
-            myBricks[i][j] = new Bricks(20+ i*140,30+j*50);
+            myBricks[i][j] = new Bricks(20+ i*130,30+j*50);
         }
     }
 }
