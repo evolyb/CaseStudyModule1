@@ -147,9 +147,9 @@ function YouCantSee() {
         ctx.fillStyle = "white";
         ctx.closePath();
         ctx.beginPath();
-        ctx.font = "100px Arial";
+        ctx.font = "300px Arial";
         ctx.fillStyle = "black"
-        ctx.fillText(timeNow,canvas.width/2 - 50,canvas.height/2 - 50);
+        ctx.fillText(timeNow,canvas.width/2-100,canvas.height/2+50);
         ctx.closePath();
     }
 }

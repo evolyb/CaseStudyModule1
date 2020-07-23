@@ -26,7 +26,7 @@ function NotKnow(x,y) {
             let selectCase = Math.floor(Math.random()*6);
             let count = 0;
             let randX, randY;
-            switch (selectCase) {
+            switch (3) {
                 case 0:
                     for (let i = 0; i < 3; i++) {
                         let newBall = new Balls();
