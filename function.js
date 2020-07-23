@@ -13,9 +13,20 @@ function loadGame() {
     }
     ctx.closePath();
 }
+function showInstructor() {
+    if (isStart) return;
+    backgroundImg.src = "images/background0.png";
+    backgroundImg.onload = function(){
+        ctx.beginPath();
+        ctx.drawImage(backgroundImg,0,0,canvas.width,canvas.height);
+        ctx.closePath();
+    }
+
+}
 function startGame() {
     if (isOver) return;
     if (isStart) return;
+    backgroundImg.src = "images/background"+backgroundID+".png";
     startText = "";
     isStart = true;
     soundBegin.play();
@@ -75,7 +86,7 @@ function moveMyBar(evt) {
             break;
     }
 }
-function stopMyBar(evt) {
+function stopMyBar() {
     myBar.dx = 0;
 }
 let blackOut = new BlackOut();
