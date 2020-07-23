@@ -1,11 +1,22 @@
 
 function loadGame() {
     soundBegin = new Audio("sounds/begin.mp3");
-    drawBackground();
+    backgroundImg.src = "images/background"+backgroundID+".png";
+    ctx.beginPath();
+    backgroundImg.onload = function(){
+        ctx.beginPath();
+        ctx.drawImage(backgroundImg,0,0,canvas.width,canvas.height);
+        ctx.closePath();
+        ctx.font = "55px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(startText,20,300);
+    }
+    ctx.closePath();
 }
 function startGame() {
     if (isOver) return;
     if (isStart) return;
+    startText = "";
     isStart = true;
     soundBegin.play();
     window.addEventListener("keydown",moveMyBar);
@@ -95,7 +106,9 @@ function drawBackground() {
     } else backgroundID =1;
     backgroundImg.src = "images/background"+backgroundID+".png";
     backgroundImg.onload = function(){
+        ctx.beginPath();
         ctx.drawImage(backgroundImg,0,0,canvas.width,canvas.height);
+        ctx.closePath();
     }
 }
 function GetScore() {
