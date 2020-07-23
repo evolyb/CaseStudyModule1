@@ -83,6 +83,8 @@ function NotKnow(x,y) {
         }
     this.update = function () {
         this.beEaten(myBar);
+        if (!this.isExist) return;
+        if (this.y >= canvas.height) this.dy = 0;
         this.y += this.dy;
         this.show();
     }
